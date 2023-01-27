@@ -33,12 +33,6 @@ public class Pessoa implements Serializable{
 		super();
 	}
 	
-	public Pessoa(String nome, Endereco endereco) {
-		super();
-		this.nome = nome;
-		this.endereco.add(endereco);
-	}
-
 	public Pessoa(String nome) {
 		super();
 		this.nome = nome;

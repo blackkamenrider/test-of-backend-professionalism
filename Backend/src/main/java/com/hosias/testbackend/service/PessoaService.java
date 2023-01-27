@@ -1,6 +1,7 @@
 package com.hosias.testbackend.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +15,15 @@ public class PessoaService {
    @Autowired
    private PessoaRepository pessoaRepository;
 	
-  //Listar pessoas  
    public List<Pessoa> findAll(){
 		
 		return pessoaRepository.findAll();
 	}
    
-   
-   
-  
+   public Pessoa  findByName(String name){	
+		
+		Optional<Pessoa> obj = pessoaRepository.findByName(name);
+	 
+	 return obj.orElseThrow();
+	}
 }

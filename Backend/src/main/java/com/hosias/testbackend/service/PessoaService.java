@@ -14,7 +14,40 @@ public class PessoaService {
 
    @Autowired
    private PessoaRepository pessoaRepository;
+   
+ //#### INSERT ####   
+   public Pessoa insert(Pessoa obj) {
+		
+		return pessoaRepository.save(obj);
+	}
+   
+ //#### UPDATE ####  
+	public Pessoa update(Long id, Pessoa obj) {
+		
+		try {
+			Pessoa entity = pessoaRepository.getReferenceById(id);
+			
+			updateData(entity, obj);
+			
+			return pessoaRepository.save(entity);
+		}
+		catch(RuntimeException e) {
+			
+		}
+		
+		
+		return obj;		
+	}
 	
+//#### METHOD UPDATEDATA ####
+		private void updateData(Pessoa entity, Pessoa obj) {
+				
+			entity.setNome(obj.getNome());
+			entity.setDataNacismento(obj.getDataNacismento());
+		}
+		
+	
+ //#### FIND BY ALL ####
    public List<Pessoa> findAll(){
 		
 		return pessoaRepository.findAll();

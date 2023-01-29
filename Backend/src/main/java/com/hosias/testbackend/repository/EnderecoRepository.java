@@ -6,4 +6,5 @@ import com.hosias.testbackend.entities.Endereco;
 
 public interface EnderecoRepository extends JpaRepository<Endereco, Long>{
 	 
+	
 }

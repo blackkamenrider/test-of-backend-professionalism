@@ -14,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.hosias.testbackend.entities.Endereco;
 import com.hosias.testbackend.service.EnderecoService;
+import com.hosias.testbackend.service.PessoaService;
 
 @RestController
 @RequestMapping(value = "endereco")
@@ -22,6 +23,8 @@ public class EnderecoControllers {
 	@Autowired
 	public EnderecoService enderecoService;
 	
+	@Autowired
+	public PessoaService pessoaService;
 	
 	@PostMapping
 	public ResponseEntity<Endereco> insert(@RequestBody Endereco obj){

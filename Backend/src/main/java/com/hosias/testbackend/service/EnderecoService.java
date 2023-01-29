@@ -18,11 +18,10 @@ public class EnderecoService {
 	
 //#### INSERT ####	
 		public Endereco insert(Endereco obj) {
-			
-         //   pessoaRepository.save(objPessoa);
             
 			return enderecoRepository.save(obj);
 		}
+		
 //#### FIND BY ALL ####	
 	   public List<Endereco> findAll(){
 			

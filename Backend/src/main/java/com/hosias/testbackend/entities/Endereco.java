@@ -2,6 +2,8 @@ package com.hosias.testbackend.entities;
 
 import java.io.Serializable;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +30,7 @@ public class Endereco implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "pessoa-endereco")
+    @Autowired
 	private Pessoa pessoa;
 	
 	public Endereco() {
@@ -53,7 +56,7 @@ public class Endereco implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+/**/	
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -97,6 +100,18 @@ public class Endereco implements Serializable{
 
 	public void setEndPrincipal(Boolean endPrincipal) {
 		this.endPrincipal = endPrincipal;
-	}	
+	}
+
+/*
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+*/
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+	
+	
 
 }

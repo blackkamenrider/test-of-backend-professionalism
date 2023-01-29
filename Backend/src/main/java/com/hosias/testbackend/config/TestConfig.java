@@ -25,8 +25,8 @@ public class TestConfig implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-	 Pessoa pessoa1 = new Pessoa("Marcilane");
-	 Pessoa pessoa2 = new Pessoa("Attornatus");
+	 Pessoa pessoa1 = new Pessoa("Marcilane Pereira Fagundes", "2023-01-29T00:38:26Z"); 
+	 Pessoa pessoa2 = new Pessoa("Attornatus","2018-10-16T00:49:30Z");
 	 
 	 Endereco endereco1 = new Endereco("Rua Miguel Inácio Faraco", "88705-050",355, "Tubarão", pessoa2, true);	
 	 Endereco endereco2 = new Endereco("Rua Marília", "26170190", 620, "Belford Roxo", pessoa1,false);	

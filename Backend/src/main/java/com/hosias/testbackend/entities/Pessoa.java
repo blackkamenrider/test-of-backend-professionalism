@@ -1,10 +1,12 @@
 package com.hosias.testbackend.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,11 +22,15 @@ public class Pessoa implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private LocalDate dataNascimento;
+	
+	//para garantir que minha dataNasc seja Mostrado la no Json com o formato string do iso 8601 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'",timezone = "GMT")
+	private Instant dataNascimento;
 	
 	@OneToMany(mappedBy = "pessoa")
 	private List<Endereco> endereco = new ArrayList<>();
@@ -38,10 +44,10 @@ public class Pessoa implements Serializable{
 		this.nome = nome;
 	}
 
-	public Pessoa(String nome, LocalDate dataNascimento ) {
+	public Pessoa(String nome, String  dataNascimento ) {
 		super();
 		this.nome = nome;
-		this.dataNascimento = dataNascimento;
+		this.dataNascimento =  Instant.parse(dataNascimento);  
 	}
 
 	public Long getId() {
@@ -60,12 +66,13 @@ public class Pessoa implements Serializable{
 		this.nome = nome;
 	}
 
-	public LocalDate getDataNacismento() {
+	public Instant getDataNacismento() {
 		return dataNascimento;
 	}
 
-	public void setDataNacismento(LocalDate dataNacismento) {
-		this.dataNascimento = dataNacismento;
+	public void setDataNacismento( Instant dataNacismento) {
+		
+		this.dataNascimento = dataNacismento; 
 	}
 
 	public static long getSerialversionuid() {

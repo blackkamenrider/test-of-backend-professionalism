@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.hosias.testbackend.entities.Pessoa;
 import com.hosias.testbackend.repository.PessoaRepository;
+import com.hosias.testbackend.service.exceptions.ResourceNotFoundException;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class PessoaService {
@@ -31,16 +34,14 @@ public class PessoaService {
 			
 			return pessoaRepository.save(entity);
 		}
-		catch(RuntimeException e) {
+		catch(EntityNotFoundException e) { //RuntimeException e
 			
+			throw new ResourceNotFoundException(id);
 		}
-		
-		
-		return obj;		
 	}
 	
 //#### METHOD UPDATEDATA ####
-		private void updateData(Pessoa entity, Pessoa obj) {
+	private void updateData(Pessoa entity, Pessoa obj) {
 				
 			entity.setNome(obj.getNome());
 			entity.setDataNacismento(obj.getDataNacismento());
@@ -48,15 +49,16 @@ public class PessoaService {
 		
 	
  //#### FIND BY ALL ####
-   public List<Pessoa> findAll(){
+	public List<Pessoa> findAll(){
 		
 		return pessoaRepository.findAll();
 	}
    
-   public Pessoa  findByName(String name){	
+  //#### FIND BY NAME 
+	public List<Pessoa>   findByName(String name){	
 		
-		Optional<Pessoa> obj = pessoaRepository.findByName(name);
+		Optional<List<Pessoa>> obj = pessoaRepository.findByName(name);
 	 
-	 return obj.orElseThrow();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(name));
 	}
 }

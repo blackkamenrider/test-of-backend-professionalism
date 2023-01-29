@@ -43,7 +43,7 @@ public class PessoaControllers {
 			
 		return ResponseEntity.ok().body(list);
 		}
-		
+/*		
 	
 	@GetMapping ("/name") 
 	public ResponseEntity<Pessoa> findByName(@RequestParam(name = "name") String name){
@@ -52,6 +52,17 @@ public class PessoaControllers {
        
        return ResponseEntity.ok().body(obj);	
 	}
+*/
+	
+	
+	@GetMapping ("/name") 
+	public ResponseEntity<List<Pessoa>> findByName(@RequestParam(name = "name") String name){// 
+			
+      List<Pessoa>  obj = pessoaService.findByName(name);     
+       
+       return ResponseEntity.ok().body(obj);	
+	}
+	
 	
 	
 	@PutMapping(value = "/{id}")

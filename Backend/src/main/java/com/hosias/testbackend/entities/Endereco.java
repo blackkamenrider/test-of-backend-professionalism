@@ -56,7 +56,7 @@ public class Endereco implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-/**/	
+	
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -102,12 +102,7 @@ public class Endereco implements Serializable{
 		this.endPrincipal = endPrincipal;
 	}
 
-/*
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
 
-*/
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
